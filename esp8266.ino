@@ -22,17 +22,6 @@ void connectWiFi() {
   Serial.println("\nIP: " + WiFi.localIP().toString());
 }
 
-// ================= ROOT: INDEX.HTML =================
-void handleRoot() {
-  File f = SD.open("/index.html");
-  if (!f) {
-    server.send(404, "text/plain", "index.html not found");
-    return;
-  }
-  server.streamFile(f, "text/html");
-  f.close();
-}
-
 // ================= UPLOAD =================
 void handleUpload() {
   HTTPUpload& upload = server.upload();
